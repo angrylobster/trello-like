@@ -1,39 +1,36 @@
 const db = {
-    card: {
-        all: async () => {
-            const response = await axios.get('http://localhost:3000/cards')
-                .then(result => {
-                    return result;
-                });
-            return response;
-
-            // return axios('http://localhost:3000/cards')
-            //     .then(response => {
-            //         return response;
-            //     })
-            //     .error
-        },
-        // create: axios({
-        //     method: 'post',
-        //     url: '/user/12345',
-        //     data: {
-        //         firstName: 'Fred',
-        //         lastName: 'Flintstone'
-        //     }
-        // }),
-
-        modify: '',
-        delete: '',
+    all: database => {
+        return axios(database);
     },
-
-    column: {
-        all: '',
-        create: '',
-        modify: '',
-        delete: '',
-    }
+    get: (database, id) => {
+        return axios(`${database}/${id}`);
+    },
+    create: database => {
+        return axios({
+            method: 'post',
+            url: database,
+            data: {
+                "title": "hohohuehuehue",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                "columnId": 1
+            }
+        })
+    },        
+    modify: (database, id) => {
+        return axios({
+            method: 'put',
+            url: `${database}/${id}`,
+            data: {
+                "title": "vuvuvueueve",
+                "description": "No nothing no",
+                "columnId": 1
+            }
+        })
+    },
+    delete: (database, id) => {
+        return axios({
+            method: 'delete',
+            url: `${database}/${id}`
+        })
+    },
 }
-let a = db.card.all();
-// .then(result => {
-//     console.log(result)
-// });
