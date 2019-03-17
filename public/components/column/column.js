@@ -8,6 +8,7 @@ class TaskColumn extends HTMLElement {
 
     connectedCallback(){
         this.setColumnContent();
+        this.setAddCardListener();
     }
 
     static get observedAttributes() { 
@@ -19,6 +20,13 @@ class TaskColumn extends HTMLElement {
             console.log(oldValue);
             console.log(newValue);
         }
+    }
+
+    setAddCardListener(){
+        let addCardButton = this.shadowRoot.querySelector('button');
+        addCardButton.addEventListener('click', () => {
+            alert('column ' + this.id);
+        })
     }
 
     setColumnContent(){

@@ -6,14 +6,10 @@ class TaskCard extends HTMLElement {
         });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/card/card.css">';
         this.shadowRoot.appendChild(document.getElementById('card').content.cloneNode(true));
-
     }
 
     connectedCallback() {
         this.initializeCardContent();
-        // if (this.hasAttribute('title')){
-        //     this.shadowRoot.getElementById('column-title').innerText = this.title;
-        // }
     }
 
     static get observedAttributes() {

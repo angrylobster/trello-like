@@ -23,8 +23,9 @@
             background-color: rgb(75, 191, 107);
             height: 100vh;
         }
-        trello-app{
-            display:flex;
+
+        trello-app {
+            display: flex;
             padding: 5px;
         }
     </style>
@@ -32,13 +33,18 @@
 
 <body>
     <template id="column">
-        <div id="column-content">
-            <h1 id="column-title">
-                (No Title)
-            </h1>
+        <div>
+            <div id="column-content">
+                <h1 id="column-title">
+                    (No Title)
+                </h1>
+            </div>
+            <button>
+                <span style="font-size: 20px; font-weight: 100;">+</span> Add another card
+            </button>
         </div>
-    </template>    
-    
+    </template>
+
     <template id="card">
         <div>
             <h1 id="card-title">
