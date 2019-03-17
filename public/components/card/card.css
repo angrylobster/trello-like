@@ -21,3 +21,24 @@ h1 {
     font-weight: 400;
     margin-top: 0;
 }
+
+div:hover #card-delete{
+    display:block;
+}
+
+#card-delete{
+    position: absolute;
+    right:0px;
+    top:0px;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    color:rgba(30,30,30,0,3);
+    display: none;
+    text-align: center;
+}
+#card-delete:hover{
+    background-color: rgba(30,30,30,0.1);
+    color: gray;
+    border-radius: 3px;
+}

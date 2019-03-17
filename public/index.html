@@ -33,13 +33,13 @@
 
 <body>
     <template id="column">
-        <div>
+        <div id="column-wrapper">
             <div id="column-content">
                 <h1 id="column-title">
                     (No Title)
                 </h1>
             </div>
-            <button>
+            <button id="add-card-button">
                 <span style="font-size: 20px; font-weight: 100;">+</span> Add another card
             </button>
         </div>
@@ -52,10 +52,13 @@
             </h1>
             <p id="card-description">
             </p>
+            <p id="card-delete">
+                x
+            </p>
         </div>
     </template>
 
-    <trello-app>
+    <trello-app cards="" columns="" >
     </trello-app>
 </body>
 

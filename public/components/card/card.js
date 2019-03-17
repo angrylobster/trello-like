@@ -6,6 +6,7 @@ class TaskCard extends HTMLElement {
         });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/card/card.css">';
         this.shadowRoot.appendChild(document.getElementById('card').content.cloneNode(true));
+        this.shadowRoot.getElementById('card-delete').addEventListener('click', this.deleteCard)
     }
 
     connectedCallback() {
@@ -28,6 +29,10 @@ class TaskCard extends HTMLElement {
         }
     }
 
+    deleteCard(){
+        db.delete('cards', this.parentNode.id.split('card')[1]);
+    }
+
     setCardContent(name, newValue) {
         switch (name) {
             case 'title':
@@ -46,6 +51,5 @@ class TaskCard extends HTMLElement {
                 break;
         }
     }
-
 }
 window.customElements.define('task-card', TaskCard);

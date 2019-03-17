@@ -11,12 +11,26 @@ class App extends HTMLElement {
         .then(cards => { this.cards = cards.data })
         .then(() => { return db.all('columns')})
         .then(columns => { this.columns = columns.data })
-        .then(() => { this.setColumnsAndCards() });
+        .then(() => { 
+            this.setColumnsAndCards() 
+        });
+    }
+
+    getColumns(){
+        db.all('columns')
+        .then(columns => { this.columns = columns.data });
+    }
+
+    getCards(){
+        db.all('cards')
+        .then(cards => { this.cards = cards.data });
     }
 
     setColumnsAndCards(){
         this.columns.forEach(column => {
             let columnNode = cm.createColumn(column);
+            columnNode.getColumns = this.getColumns;
+            columnNode.getCards = this.getCards;
             this.shadowRoot.appendChild(columnNode);
             this.cards.forEach(card => {
                 if (columnNode.id === 'column' + card.columnId){
@@ -24,9 +38,6 @@ class App extends HTMLElement {
                 }
             })
         })
-        // this.cards.forEach(card => {
-        //     this.shadowRoot.appendChild(cm.createCard(card));
-        // })
     }
 }
 

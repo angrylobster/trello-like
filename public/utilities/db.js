@@ -5,14 +5,14 @@ const db = {
     get: (database, id) => {
         return axios(`${database}/${id}`);
     },
-    create: database => {
+    create: (database, post) => {
         return axios({
             method: 'post',
             url: database,
             data: {
-                "title": "hohohuehuehue",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "columnId": 1
+                "title": post.title,
+                "description": "",
+                "columnId": post.columnIdattri
             }
         })
     },        
