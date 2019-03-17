@@ -8,9 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>
-    <script src="./db.js"></script>
+    <script src="./components/column/column.js"></script>
+    <script src="./utilities/db.js"></script>
+    <script src="./utilities/cm.js"></script>
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
         }
@@ -19,10 +22,24 @@
             background-color: rgb(75, 191, 107);
             height: 100vh;
         }
+        trello-app{
+            display:flex;
+            padding: 5px;
+        }
     </style>
 </head>
+
 <body>
-    <trello-app></trello-app>
+    <template id="column">
+        <div>
+            <h1 id="column-title">
+                (No Title)
+            </h1>
+        </div>
+    </template>
+
+    <trello-app>
+    </trello-app>
 </body>
 
 </html>

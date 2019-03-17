@@ -1,0 +1,16 @@
+div {
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+    border-radius: 5px;
+    width: 278px;
+    margin: 5px;
+}
+
+h1 {
+    color: #17394d;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    padding: 0 10px 0 10px;
+}
