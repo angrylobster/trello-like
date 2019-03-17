@@ -1,0 +1,22 @@
+div {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    line-height: 20px;
+    background-color: white;
+    position: relative;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 1px 1px rgba(30,30,30,0.3);
+}
+
+p {
+    color: rgb(100,100,100);
+    margin: 0;
+}
+
+h1 {
+    color: rgb(23, 57, 77);
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}

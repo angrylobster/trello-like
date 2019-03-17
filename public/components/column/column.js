@@ -7,9 +7,7 @@ class TaskColumn extends HTMLElement {
     }
 
     connectedCallback(){
-        if (this.hasAttribute('title')){
-            this.shadowRoot.getElementById('column-title').innerText = this.title;
-        }
+        this.setColumnContent();
     }
 
     static get observedAttributes() { 
@@ -23,5 +21,14 @@ class TaskColumn extends HTMLElement {
         }
     }
 
+    setColumnContent(){
+        if (this.hasAttribute('title')){
+            this.shadowRoot.getElementById('column-title').innerText = this.title;
+        }
+
+        if(this.hasAttribute('id')){
+            this.id = 'column' + this.id;
+        }
+    }
 }
 window.customElements.define('task-column', TaskColumn);

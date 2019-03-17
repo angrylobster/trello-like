@@ -16,8 +16,17 @@ class App extends HTMLElement {
 
     setColumnsAndCards(){
         this.columns.forEach(column => {
-            this.shadowRoot.appendChild(cm.createColumn(column));
+            let columnNode = cm.createColumn(column);
+            this.shadowRoot.appendChild(columnNode);
+            this.cards.forEach(card => {
+                if (columnNode.id === 'column' + card.columnId){
+                    columnNode.shadowRoot.getElementById('column-content').appendChild(cm.createCard(card));
+                }
+            })
         })
+        // this.cards.forEach(card => {
+        //     this.shadowRoot.appendChild(cm.createCard(card));
+        // })
     }
 }
 

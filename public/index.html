@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>
     <script src="./components/column/column.js"></script>
+    <script src="./components/card/card.js"></script>
     <script src="./utilities/db.js"></script>
     <script src="./utilities/cm.js"></script>
     <style>
@@ -31,10 +32,20 @@
 
 <body>
     <template id="column">
-        <div>
+        <div id="column-content">
             <h1 id="column-title">
                 (No Title)
             </h1>
+        </div>
+    </template>    
+    
+    <template id="card">
+        <div>
+            <h1 id="card-title">
+                (No Title)
+            </h1>
+            <p id="card-description">
+            </p>
         </div>
     </template>
 
