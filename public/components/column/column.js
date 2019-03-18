@@ -18,6 +18,9 @@ class TaskColumn extends HTMLElement {
         
         let deleteColumnButton = this.shadowRoot.getElementById('column-delete');
         deleteColumnButton.addEventListener('click', this.deleteColumn);
+
+        let columnTitle = this.shadowRoot.getElementById('column-title');
+        columnTitle.addEventListener('click', this.editTitle);
     }
 
     static get observedAttributes() {
@@ -25,16 +28,58 @@ class TaskColumn extends HTMLElement {
     }
 
     deleteColumn(){
-        let confirmDelete = prompt(`Are you sure you want to delete this column? Type 'y' or 'yes' to confirm.`).toLowerCase();
-        if (confirmDelete === 'y' || confirmDelete === 'yes'){
+        let confirmDelete = confirm('Do you want to delete this column?');
+        if (confirmDelete){
             db.delete('columns', parseInt(this.id.split('column')[1]))
             .then(result => {
-                console.log(result);
                 this.remove();
             })
             .catch(error => {
                 console.log('Something went wrong: ', error);
             })
+        }
+    }
+
+    editTitle(){
+        let input = document.createElement('input');
+        let h1 = this;
+        input.value = h1.innerText;
+        input.type = 'text';
+
+        function hideInput(){
+            input.remove(); 
+            h1.editing = false;
+            h1.style.display = 'block';
+        }
+
+        input.addEventListener('blur', hideInput);
+        input.addEventListener('keydown', e => { 
+            input.removeEventListener('blur', hideInput);
+            if (e.keyCode === 27){
+                hideInput(e);
+            }    
+            if (e.keyCode === 13){
+                db.modify('columns', {
+                    "title": e.target.value,
+                    "id": parseInt(this.parentNode.parentNode.parentNode.host.id.split('column')[1])
+                })
+                .then(result => {
+                    h1.innerText = result.data.title;
+                    h1.style.display = 'block';
+                    input.remove();
+                })
+                .catch(error => {
+                    console.log('Something went wrong: ', error);
+                })
+            }
+        })
+
+        if (!h1.editing){
+            h1.parentNode.insertBefore(input, h1);
+            h1.style.display = 'none';
+            h1.editing = true;
+            input.focus();
+            input.setSelectionRange(0,input.value.length);
         }
     }
 

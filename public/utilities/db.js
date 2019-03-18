@@ -26,17 +26,28 @@ const db = {
                     }
                 })
         }
-    },        
-    modify: (database, id) => {
-        return axios({
-            method: 'put',
-            url: `${database}/${id}`,
-            data: {
-                "title": "vuvuvueueve",
-                "description": "No nothing no",
-                "columnId": 1
-            }
-        })
+    },
+    modify: (database, object) => {
+        switch (database) {
+            case 'cards':
+                return axios({
+                    method: 'post',
+                    url: database,
+                    data: {
+                        "title": object.title,
+                        "description": "",
+                        "columnId": object.columnId
+                    }
+                })
+            case 'columns':
+                return axios({
+                    method: 'put',
+                    url: `${database}/${object.id}`,
+                    data: {
+                        "title": object.title
+                    }
+                })
+        }
     },
     delete: (database, id) => {
         return axios({

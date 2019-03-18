@@ -21,16 +21,8 @@ class App extends HTMLElement {
     }
 
     addColumn() {
-        db.all('cards')
-            .then(cards => {
-                this.cards = cards.data;
-                return db.all('columns');
-            })
-            .then(columns => {
-                this.columns = columns.data;
-                return db.create('columns', {
-                    'title': '(No Title)'
-                });
+        db.create('columns', {
+                'title': '(No Title)'
             })
             .then(result => {
                 this.shadowRoot.getElementById('columns-wrapper').appendChild(cm.createColumn(result.data));
