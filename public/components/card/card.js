@@ -32,8 +32,6 @@ class TaskCard extends HTMLElement {
 
     deleteCard(){
         db.delete('cards', this.parentNode.id.split('card')[1]);
-        console.log(this);
-        this.doRenderAgain();
     }
 
     setCardContent(name, newValue) {

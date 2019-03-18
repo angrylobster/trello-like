@@ -7,14 +7,6 @@
     {
       "id": 2,
       "title": "Column 2"
-    },
-    {
-      "title": "(No Title)",
-      "id": 3
-    },
-    {
-      "title": "(No Title)",
-      "id": 4
     }
   ],
   "cards": [
@@ -41,12 +33,6 @@
       "title": "Card 4",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": 2
-    },
-    {
-      "title": "This is a good title",
-      "description": "",
-      "columnId": "1",
-      "id": 9
     },
     {
       "title": "test",

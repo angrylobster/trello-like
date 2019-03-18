@@ -2,6 +2,7 @@ div {
     background-color: rgb(230, 230, 230);
     margin: 5px;
     border-radius: 4px;
+    position: relative;
 }
 
 #column-content {
@@ -29,6 +30,12 @@ button {
     font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: rgb(107, 128, 140);
+}
+
+p {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    color: rgb(100,100,100);
+    margin: 0;
 }
 
 h1 {
@@ -61,4 +68,26 @@ textarea:focus {
 
 textarea::placeholder{
     font-size: 15px;
+}
+
+#column-content:hover #column-delete{
+    display: inherit;
+}
+
+#column-delete{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top:2px;
+    width: 25px;
+    height: 25px;
+    color:rgba(30,30,30,0,3);
+    display: none;
+    text-align: center;
+}
+
+#column-delete:hover{
+    background-color: rgba(30,30,30,0.1);
+    color: gray;
+    border-radius: 3px;
 }

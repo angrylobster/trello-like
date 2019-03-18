@@ -7,22 +7,40 @@ class TaskColumn extends HTMLElement {
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/column/column.css">';
         this.shadowRoot.appendChild(document.getElementById('column').content.cloneNode(true));
         this.appendAddCardForm = this.appendAddCardForm.bind(this);
+        this.deleteColumn = this.deleteColumn.bind(this);
     }
 
     connectedCallback() {
         this.setColumnContent();
-        this.setAddCardButtonListener();
+
+        let addCardButton = this.shadowRoot.querySelector('button');
+        addCardButton.addEventListener('click', this.appendAddCardForm);
+        
+        let deleteColumnButton = this.shadowRoot.getElementById('column-delete');
+        deleteColumnButton.addEventListener('click', this.deleteColumn);
     }
 
     static get observedAttributes() {
         return ['title'];
     }
 
+    deleteColumn(){
+        let confirmDelete = prompt(`Are you sure you want to delete this column? Type 'y' or 'yes' to confirm.`).toLowerCase();
+        if (confirmDelete === 'y' || confirmDelete === 'yes'){
+            db.delete('columns', parseInt(this.id.split('column')[1]))
+            .then(result => {
+                console.log(result);
+                this.remove();
+            })
+            .catch(error => {
+                console.log('Something went wrong: ', error);
+            })
+        }
+    }
+
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log('name', name, 'old value', oldValue, 'new value', newValue);
         if (name === 'title') {
-            console.log(oldValue);
-            console.log(newValue);
+
         }
     }
 
@@ -43,15 +61,8 @@ class TaskColumn extends HTMLElement {
                     columnId: parseInt(this.id.split('column')[1]),
                 }
                 db.create('cards', jsonObject);
-                console.log(this);
-                this.doRenderAgain();
             }
         })
-    }
-
-    setAddCardButtonListener() {
-        let addCardButton = this.shadowRoot.querySelector('button');
-        addCardButton.addEventListener('click', this.appendAddCardForm);
     }
 
     setColumnContent() {
