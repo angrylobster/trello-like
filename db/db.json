@@ -5,12 +5,8 @@
       "title": "Column 1"
     },
     {
-      "title": "hahaha",
+      "title": "Joke",
       "id": 2
-    },
-    {
-      "title": "(No Title)",
-      "id": 6
     }
   ],
   "cards": [
@@ -37,18 +33,6 @@
       "title": "Card 4",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": 2
-    },
-    {
-      "title": "test",
-      "description": "",
-      "columnId": 2,
-      "id": 10
-    },
-    {
-      "title": "why not",
-      "description": "",
-      "columnId": 2,
-      "id": 11
     }
   ]
 }

@@ -31,7 +31,13 @@ class TaskCard extends HTMLElement {
     }
 
     deleteCard(){
-        db.delete('cards', this.parentNode.id.split('card')[1]);
+        db.delete('cards', this.parentNode.id.split('card')[1])
+        .then(result => {
+            this.parentNode.remove();
+        })
+        .catch(error => {
+            console.log("Something went wrong: " + error);
+        })
     }
 
     setCardContent(name, newValue) {
