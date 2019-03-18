@@ -4,9 +4,25 @@ class App extends HTMLElement {
         this.columns = [], this.cards = [];
         const shadowRoot = this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./app.css">';
+        this.doRenderAgain = this.doRenderAgain.bind(this);
     }
 
     connectedCallback() {
+        this.renderColumnsAndCards();
+    }
+
+    doRenderAgain(){
+        console.log('doing render again');
+        new Promise((resolve, reject) => {
+            console.log(this);
+            resolve(this.clearColumnsAndCards());
+        }).then(result => {
+            console.log(result);
+            this.renderColumnsAndCards();
+        })
+    }
+
+    renderColumnsAndCards(){
         db.all('cards')
         .then(cards => { this.cards = cards.data })
         .then(() => { return db.all('columns')})
@@ -16,25 +32,22 @@ class App extends HTMLElement {
         });
     }
 
-    getColumns(){
-        db.all('columns')
-        .then(columns => { this.columns = columns.data });
-    }
-
-    getCards(){
-        db.all('cards')
-        .then(cards => { this.cards = cards.data });
+    clearColumnsAndCards(){
+        while(this.shadowRoot.childNodes.length>0){
+            this.shadowRoot.removeChild(this.shadowRoot.firstChild);
+        }
     }
 
     setColumnsAndCards(){
         this.columns.forEach(column => {
             let columnNode = cm.createColumn(column);
-            columnNode.getColumns = this.getColumns;
-            columnNode.getCards = this.getCards;
+            columnNode.doRenderAgain = this.doRenderAgain;
             this.shadowRoot.appendChild(columnNode);
             this.cards.forEach(card => {
                 if (columnNode.id === 'column' + card.columnId){
-                    columnNode.shadowRoot.getElementById('column-content').appendChild(cm.createCard(card));
+                    let cardNode = cm.createCard(card);
+                    cardNode.doRenderAgain = this.doRenderAgain;
+                    columnNode.shadowRoot.getElementById('column-content').appendChild(cardNode);
                 }
             })
         })

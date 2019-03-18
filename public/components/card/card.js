@@ -6,7 +6,8 @@ class TaskCard extends HTMLElement {
         });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/card/card.css">';
         this.shadowRoot.appendChild(document.getElementById('card').content.cloneNode(true));
-        this.shadowRoot.getElementById('card-delete').addEventListener('click', this.deleteCard)
+        this.shadowRoot.getElementById('card-delete').addEventListener('click', this.deleteCard);
+        // this.deleteCard = this.deleteCard.bind(this);
     }
 
     connectedCallback() {
@@ -31,6 +32,8 @@ class TaskCard extends HTMLElement {
 
     deleteCard(){
         db.delete('cards', this.parentNode.id.split('card')[1]);
+        console.log(this);
+        this.doRenderAgain();
     }
 
     setCardContent(name, newValue) {

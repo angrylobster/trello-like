@@ -35,70 +35,22 @@
       "columnId": 2
     },
     {
-      "title": "Uvuvuveuveue",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "columnId": 1,
-      "id": 6
-    },
-    {
-      "title": "hohohuehuehue",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "columnId": 1,
-      "id": 7
-    },
-    {
-      "title": "hohohuehuehue",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "columnId": 1,
-      "id": 8
-    },
-    {
       "title": "This is a good title",
       "description": "",
       "columnId": "1",
       "id": 9
     },
     {
-      "title": "asdf",
+      "title": "test",
       "description": "",
-      "columnId": "2",
+      "columnId": 2,
       "id": 10
     },
     {
-      "title": "asdfzxcv",
+      "title": "why not",
       "description": "",
-      "columnId": "2",
+      "columnId": 2,
       "id": 11
-    },
-    {
-      "title": "zxcv",
-      "description": "",
-      "columnId": "2",
-      "id": 12
-    },
-    {
-      "title": "asdfasdf",
-      "description": "",
-      "columnId": "2",
-      "id": 13
-    },
-    {
-      "title": "asdfzxcv",
-      "description": "",
-      "columnId": "2",
-      "id": 14
-    },
-    {
-      "title": "testing again",
-      "description": "",
-      "columnId": "2",
-      "id": 16
-    },
-    {
-      "title": "power",
-      "description": "",
-      "columnId": "2",
-      "id": 19
     }
   ]
 }

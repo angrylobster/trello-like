@@ -37,15 +37,13 @@ class TaskColumn extends HTMLElement {
         let addCardForm = this.shadowRoot.getElementById('add-card-form');
         addCardForm.addEventListener('keydown', e => {
             if (e.keyCode === 13) {
-                new Promise((resolve, reject) => {
-                    resolve(db.create('cards', {
-                        title: e.target.value,
-                        columnId: this.id.split('column')[1],
-                    }))
-                })
-                .then(() => {
-                    this.getCards();
-                })
+                let jsonObject = {
+                    title: e.target.value,
+                    columnId: parseInt(this.id.split('column')[1]),
+                }
+                db.create('cards', jsonObject);
+                console.log(this);
+                this.doRenderAgain();
             }
         })
     }

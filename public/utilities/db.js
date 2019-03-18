@@ -12,7 +12,7 @@ const db = {
             data: {
                 "title": post.title,
                 "description": "",
-                "columnId": post.columnIdattri
+                "columnId": post.columnId
             }
         })
     },        
