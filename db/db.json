@@ -5,22 +5,22 @@
       "title": "Column 1"
     },
     {
-      "title": "Joke",
+      "title": "(No Title)",
       "id": 2
     }
   ],
   "cards": [
     {
-      "id": 1,
-      "title": "Card 1",
+      "title": "(No Title)",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "columnId": 1
+      "columnId": "1",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Card 2",
+      "title": "Babu",
       "description": "Quisque et pellentesque sem.",
-      "columnId": 1
+      "columnId": "1",
+      "id": 2
     },
     {
       "id": 3,
@@ -29,10 +29,10 @@
       "columnId": 1
     },
     {
-      "id": 4,
-      "title": "Card 4",
+      "title": "Hey",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
-      "columnId": 2
+      "columnId": "2",
+      "id": 4
     },
     {
       "title": "Jokes",

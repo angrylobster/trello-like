@@ -31,11 +31,11 @@ const db = {
         switch (database) {
             case 'cards':
                 return axios({
-                    method: 'post',
-                    url: database,
+                    method: 'put',
+                    url: `${database}/${object.id}`,
                     data: {
                         "title": object.title,
-                        "description": "",
+                        "description": object.description,
                         "columnId": object.columnId
                     }
                 })

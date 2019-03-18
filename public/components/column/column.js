@@ -60,7 +60,7 @@ class TaskColumn extends HTMLElement {
             }
             if (e.keyCode === 13) {
                 db.modify('columns', {
-                        "title": e.target.value,
+                        "title": e.target.value.trim().length ? e.target.value : '(No Title)',
                         "id": parseInt(this.parentNode.parentNode.parentNode.host.id.split('column')[1])
                     })
                     .then(result => {

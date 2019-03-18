@@ -42,3 +42,14 @@ div:hover #card-delete{
     color: gray;
     border-radius: 3px;
 }
+
+input[type="text"]{
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 0;
+    margin-bottom:8px;
+    padding-top:0px;
+    color: rgb(23, 57, 77);
+    outline: none;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
