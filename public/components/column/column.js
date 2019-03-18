@@ -19,6 +19,7 @@ class TaskColumn extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        console.log('name', name, 'old value', oldValue, 'new value', newValue);
         if (name === 'title') {
             console.log(oldValue);
             console.log(newValue);

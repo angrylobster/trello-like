@@ -1,0 +1,35 @@
+#app-wrapper{
+    padding-top: 50px;
+}
+
+#button-wrapper{
+    position: fixed;
+    top: 0;
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+#columns-wrapper{
+    padding: 0 15px 0 15px;
+    display:flex;
+}
+
+button, button:visited{
+    color: rgb(230,230,230);
+    background-color: rgba(0,0,0,0.2);
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+button:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+button:focus{
+    background-color: rgba(0,230,230,0.8);
+    color: rgb(70,70,70);
+    outline: none;
+}

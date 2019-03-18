@@ -4,7 +4,34 @@ class App extends HTMLElement {
         this.columns = [], this.cards = [];
         const shadowRoot = this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./app.css">';
-        this.doRenderAgain = this.doRenderAgain.bind(this);
+        this.shadowRoot.appendChild(document.getElementById('app').content.cloneNode(true));
+        this.addButtonListeners();
+    }
+
+    addButtonListeners(){
+        let addColumnButton = this.shadowRoot.querySelector('button');
+        addColumnButton.addEventListener('mouseup', e =>{
+            e.target.blur();
+        })
+        addColumnButton.addEventListener('click', () => { this.addColumn() });
+    }
+
+    addColumn(){
+            db.all('cards')
+            .then(cards => {
+                this.cards = cards.data;
+                return db.all('columns');
+            })
+            .then(columns => {
+                this.columns = columns.data;
+                return db.create('columns', {
+                    'title': '(No Title)'
+                })
+            })
+            .then(column => {
+                console.log('column created', column)
+                this.shadowRoot.appendChild(cm.createColumn(column.data));
+            })
     }
 
     connectedCallback() {
@@ -12,7 +39,6 @@ class App extends HTMLElement {
     }
 
     doRenderAgain(){
-        console.log('doing render again');
         new Promise((resolve, reject) => {
             console.log(this);
             resolve(this.clearColumnsAndCards());
@@ -42,7 +68,8 @@ class App extends HTMLElement {
         this.columns.forEach(column => {
             let columnNode = cm.createColumn(column);
             columnNode.doRenderAgain = this.doRenderAgain;
-            this.shadowRoot.appendChild(columnNode);
+            console.log(this.shadowRoot)
+            this.shadowRoot.getElementById('columns-wrapper').appendChild(columnNode);
             this.cards.forEach(card => {
                 if (columnNode.id === 'column' + card.columnId){
                     let cardNode = cm.createCard(card);

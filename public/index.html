@@ -17,6 +17,7 @@
         body {
             margin: 0;
             padding: 0;
+            overflow-y: hidden;
         }
 
         body {
@@ -25,13 +26,25 @@
         }
 
         trello-app {
-            display: flex;
             padding: 5px;
         }
     </style>
 </head>
 
 <body>
+
+    <template id="app">
+        <div id="app-wrapper">
+            <div id="button-wrapper">
+                <button>
+                    Add Column
+                </button>
+            </div>
+            <div id="columns-wrapper">
+            </div>
+        </div>
+    </template>
+
     <template id="column">
         <div id="column-wrapper">
             <div id="column-content">
@@ -58,7 +71,7 @@
         </div>
     </template>
 
-    <trello-app cards="" columns="" >
+    <trello-app cards="" columns="">
     </trello-app>
 </body>
 
