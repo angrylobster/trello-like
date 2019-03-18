@@ -33,6 +33,12 @@
       "title": "Card 4",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": 2
+    },
+    {
+      "title": "Jokes",
+      "description": "",
+      "columnId": 1,
+      "id": 5
     }
   ]
 }

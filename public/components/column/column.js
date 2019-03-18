@@ -6,7 +6,7 @@ class TaskColumn extends HTMLElement {
         });
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/column/column.css">';
         this.shadowRoot.appendChild(document.getElementById('column').content.cloneNode(true));
-        this.appendAddCardForm = this.appendAddCardForm.bind(this);
+        this.appendCreateCardForm = this.appendCreateCardForm.bind(this);
         this.deleteColumn = this.deleteColumn.bind(this);
     }
 
@@ -14,8 +14,8 @@ class TaskColumn extends HTMLElement {
         this.setColumnContent();
 
         let addCardButton = this.shadowRoot.querySelector('button');
-        addCardButton.addEventListener('click', this.appendAddCardForm);
-        
+        addCardButton.addEventListener('click', this.appendCreateCardForm);
+
         let deleteColumnButton = this.shadowRoot.getElementById('column-delete');
         deleteColumnButton.addEventListener('click', this.deleteColumn);
 
@@ -27,59 +27,59 @@ class TaskColumn extends HTMLElement {
         return ['title'];
     }
 
-    deleteColumn(){
+    deleteColumn() {
         let confirmDelete = confirm('Do you want to delete this column?');
-        if (confirmDelete){
+        if (confirmDelete) {
             db.delete('columns', parseInt(this.id.split('column')[1]))
-            .then(result => {
-                this.remove();
-            })
-            .catch(error => {
-                console.log('Something went wrong: ', error);
-            })
+                .then(result => {
+                    this.remove();
+                })
+                .catch(error => {
+                    console.log('Something went wrong: ', error);
+                })
         }
     }
 
-    editTitle(){
+    editTitle() {
         let input = document.createElement('input');
         let h1 = this;
         input.value = h1.innerText;
         input.type = 'text';
 
-        function hideInput(){
-            input.remove(); 
+        function hideInput() {
+            input.remove();
             h1.editing = false;
             h1.style.display = 'block';
         }
 
         input.addEventListener('blur', hideInput);
-        input.addEventListener('keydown', e => { 
+        input.addEventListener('keydown', e => {
             input.removeEventListener('blur', hideInput);
-            if (e.keyCode === 27){
+            if (e.keyCode === 27) {
                 hideInput(e);
-            }    
-            if (e.keyCode === 13){
+            }
+            if (e.keyCode === 13) {
                 db.modify('columns', {
-                    "title": e.target.value,
-                    "id": parseInt(this.parentNode.parentNode.parentNode.host.id.split('column')[1])
-                })
-                .then(result => {
-                    h1.innerText = result.data.title;
-                    h1.style.display = 'block';
-                    input.remove();
-                })
-                .catch(error => {
-                    console.log('Something went wrong: ', error);
-                })
+                        "title": e.target.value,
+                        "id": parseInt(this.parentNode.parentNode.parentNode.host.id.split('column')[1])
+                    })
+                    .then(result => {
+                        h1.innerText = result.data.title;
+                        h1.style.display = 'block';
+                        input.remove();
+                    })
+                    .catch(error => {
+                        console.log('Something went wrong: ', error);
+                    })
             }
         })
 
-        if (!h1.editing){
+        if (!h1.editing) {
             h1.parentNode.insertBefore(input, h1);
             h1.style.display = 'none';
             h1.editing = true;
             input.focus();
-            input.setSelectionRange(0,input.value.length);
+            input.setSelectionRange(0, input.value.length);
         }
     }
 
@@ -89,23 +89,42 @@ class TaskColumn extends HTMLElement {
         }
     }
 
-    appendAddCardForm() {
-        let form = document.createElement('form');
-        form.id = 'add-card-form';
+    appendCreateCardForm() {
         let textarea = document.createElement('textarea');
         textarea.placeholder = 'Enter a title for this card...';
-        form.append(textarea);
-        this.shadowRoot.getElementById('add-card-button').remove();
-        this.shadowRoot.getElementById('column-wrapper').appendChild(form.cloneNode(true));
 
-        let addCardForm = this.shadowRoot.getElementById('add-card-form');
-        addCardForm.addEventListener('keydown', e => {
+        let form = document.createElement('form');
+        form.id = 'add-card-form';
+        form.append(textarea);
+
+        let addCardButton = this.shadowRoot.getElementById('add-card-button');
+        addCardButton.style.display = 'none';
+        this.shadowRoot.getElementById('column-wrapper').appendChild(form);
+
+        textarea.focus();
+        textarea.addEventListener('blur', e => {
+            addCardButton.style.display = 'block';
+            this.shadowRoot.getElementById('add-card-form').remove();
+        });
+        let createCardForm = this.shadowRoot.getElementById('add-card-form');
+        createCardForm.addEventListener('keydown', e => {
             if (e.keyCode === 13) {
+                if (e.target.value.trim().length === 0) {
+                    return;
+                }
                 let jsonObject = {
-                    title: e.target.value,
+                    title: e.target.value.trim(),
                     columnId: parseInt(this.id.split('column')[1]),
                 }
-                db.create('cards', jsonObject);
+                db.create('cards', jsonObject)
+                    .then(results => {
+                        addCardButton.style.display = 'block';
+                        textarea.blur();
+                        this.shadowRoot.getElementById('column-content').appendChild(cm.createCard(results.data));
+                    })
+                    .catch(error => {
+                        console.log("Something went wrong: " + error);
+                    })
             }
         })
     }
