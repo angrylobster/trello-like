@@ -7,6 +7,16 @@ class TaskCard extends HTMLElement {
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./components/card/card.css">';
         this.shadowRoot.appendChild(document.getElementById('card').content.cloneNode(true));
         this.shadowRoot.getElementById('card-delete').addEventListener('click', this.deleteCard);
+        this.addEventListener('click', this.toggleDescription);
+    }
+
+    toggleDescription(){
+        let description = this.shadowRoot.getElementById('card-description');
+        if(!description.style.display || description.style.display === 'none'){
+            description.style.display = 'block';
+        } else {
+            description.style.display = 'none';
+        }
     }
 
     connectedCallback() {
@@ -23,7 +33,7 @@ class TaskCard extends HTMLElement {
         function hideInput() {
             input.remove();
             h1.editing = false;
-            h1.style.display = 'block';
+            h1.style.display = 'inline-block';
         }
 
         input.addEventListener('blur', hideInput);
@@ -41,7 +51,8 @@ class TaskCard extends HTMLElement {
                     })
                     .then(result => {
                         h1.innerText = result.data.title;
-                        h1.style.display = 'block';
+                        h1.style.display = 'inline-block';
+                        h1.editing = false;
                         input.remove();
                     })
                     .catch(error => {

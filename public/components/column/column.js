@@ -66,6 +66,7 @@ class TaskColumn extends HTMLElement {
                     .then(result => {
                         h1.innerText = result.data.title;
                         h1.style.display = 'block';
+                        h1.editing = false;
                         input.remove();
                     })
                     .catch(error => {

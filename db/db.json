@@ -5,7 +5,7 @@
       "title": "Column 1"
     },
     {
-      "title": "(No Title)",
+      "title": "This is a card",
       "id": 2
     }
   ],
@@ -29,7 +29,7 @@
       "columnId": 1
     },
     {
-      "title": "Hey",
+      "title": "But so is this",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": "2",
       "id": 4
@@ -39,6 +39,12 @@
       "description": "",
       "columnId": 1,
       "id": 5
+    },
+    {
+      "title": "Title",
+      "description": "(No description)",
+      "columnId": 2,
+      "id": 6
     }
   ]
 }

@@ -13,7 +13,7 @@ const db = {
                     url: database,
                     data: {
                         "title": object.title,
-                        "description": "",
+                        "description": "(No description)",
                         "columnId": object.columnId
                     }
                 })
