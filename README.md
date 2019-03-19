@@ -8,11 +8,11 @@
 # Features
 - Display all columns with all cards
 - Create a new card with the "Add another card" button
-~~- Modify cards with the pen icon~~
+- ~~Modify cards with the pen icon~~
 - Delete a card by hovering your cursor over it and clicking the "x" button
 - Add a column by clicking the "Add Column" button
 - Modify a column title by clicking on the column title
 - Delete a column by hovering over it and clicking the "x" button
-~~- Search for any keywords presents on one or multiple cards by typing your search term into the searchbox~~
-~~- Drag and drop a card from one column to another~~
+- ~~Search for any keywords presents on one or multiple cards by typing your search term into the searchbox~~
+- ~~Drag and drop a card from one column to another~~
 - Click on a card to see its description.
