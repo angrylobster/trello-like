@@ -8,7 +8,7 @@
 # Features
 - Display all columns with all cards
 - Create a new card with the "Add another card" button
-- ~~Modify cards with the pen icon~~
+- Modify cards with the pen icon
 - Delete a card by hovering your cursor over it and clicking the "x" button
 - Add a column by clicking the "Add Column" button
 - Modify a column title by clicking on the column title
