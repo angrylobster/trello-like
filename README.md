@@ -6,9 +6,13 @@
 - This app uses json-server. You may need to manually install json-server if you encounter any issues with the app.
 
 # Features
-- App can display all columns and cards saved into database
-- Add columns by clicking the button
-- Delete columns by hovering over the column and clicking the 'x' button
-- Edit column titles by clicking on the title. Press 'enter' to submit new titles
-- Add another card. You can only define the title (at the moment)
-- Delete another card. You can hover over cards and click the "x" button to delete.
+- Display all columns with all cards
+- Create a new card with the "Add another card" button
+~~- Modify cards with the pen icon~~
+- Delete a card by hovering your cursor over it and clicking the "x" button
+- Add a column by clicking the "Add Column" button
+- Modify a column title by clicking on the column title
+- Delete a column by hovering over it and clicking the "x" button
+~~- Search for any keywords presents on one or multiple cards by typing your search term into the searchbox~~
+~~- Drag and drop a card from one column to another~~
+- Click on a card to see its description.
