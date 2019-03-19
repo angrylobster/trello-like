@@ -8,6 +8,7 @@ class TaskCard extends HTMLElement {
         this.shadowRoot.appendChild(document.getElementById('card').content.cloneNode(true));
         this.shadowRoot.getElementById('card-delete').addEventListener('click', this.deleteCard);
         this.addEventListener('click', this.toggleDescription);
+        this.shadowRoot.getElementById('card-edit').addEventListener('click', e => {this.editDescription(e)});
     }
 
     toggleDescription(){
@@ -22,6 +23,50 @@ class TaskCard extends HTMLElement {
     connectedCallback() {
         this.initializeCardContent();
         this.shadowRoot.getElementById('card-title').addEventListener('click', this.editTitle);
+    }
+
+    editDescription(e){
+        e.stopPropagation();
+        let textarea = document.createElement('textarea');
+        let description = this.shadowRoot.getElementById('card-description');
+        textarea.innerText = description.innerText;
+        textarea.rows = 3;
+
+        function hideTextArea() {
+            textarea.remove();
+            description.editing = false;
+            description.style.display = 'block';
+        }
+        textarea.addEventListener('blur', hideTextArea);
+        textarea.addEventListener('keydown', e => {
+            if (e.keyCode === 27) {
+                hideTextArea();
+            }
+            if (e.keyCode === 13) {
+                db.modify('cards', {
+                        "title": this.title,
+                        "description": e.target.value.trim().length === 0 ? '(No description)' : e.target.value,
+                        "id": parseInt(this.id),
+                        "columnId": this.getAttribute('column-id')
+                    })
+                    .then(result => {
+                        description.innerText = result.data.description;
+                        textarea.blur();
+                        this.addEventListener('click', this.toggleDescription);
+                    })
+                    .catch(error => {
+                        console.log('Something went wrong: ', error);
+                    })
+            }
+        })
+        if (!description.editing) {
+            description.parentNode.insertBefore(textarea, description);
+            description.style.display = 'none';
+            description.editing = true;
+            textarea.focus();
+            textarea.setSelectionRange(0, textarea.innerHTML.length);
+            this.removeEventListener('click', this.toggleDescription);
+        }
     }
 
     editTitle(){

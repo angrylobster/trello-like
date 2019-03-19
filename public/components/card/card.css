@@ -28,6 +28,22 @@ div:hover #card-delete, div:hover #card-edit{
     display:block;
 }
 
+textarea {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    line-height: 20px;
+    background-color: white;
+    width: 253px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    resize: vertical;
+    /* position: relative; */
+    display:block;
+}
+
+textarea:focus{
+    outline: none;
+}
+
 #card-description{
     display: none;
     font-size: 14px;

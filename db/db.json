@@ -17,34 +17,28 @@
       "id": 1
     },
     {
-      "title": "Babu",
-      "description": "Quisque et pellentesque sem.",
-      "columnId": "1",
-      "id": 2
-    },
-    {
-      "id": 3,
-      "title": "Card 3",
-      "description": "Nulla porttitor erat a sollicitudin volutpat.",
-      "columnId": 1
-    },
-    {
       "title": "But so is this",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": "2",
       "id": 4
     },
     {
-      "title": "Jokes",
-      "description": "",
-      "columnId": 1,
-      "id": 5
-    },
-    {
       "title": "Title",
       "description": "(No description)",
       "columnId": 2,
       "id": 6
+    },
+    {
+      "title": "Wah",
+      "description": "(No description)",
+      "columnId": 1,
+      "id": 7
+    },
+    {
+      "title": "lau",
+      "description": "This is not a post or is it",
+      "columnId": "1",
+      "id": 8
     }
   ]
 }
