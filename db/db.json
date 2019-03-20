@@ -1,44 +1,54 @@
 {
   "columns": [
     {
-      "id": 1,
-      "title": "Column 1"
+      "title": "Things I have yet to do",
+      "id": 1
     },
     {
-      "title": "This is a card",
+      "title": "Things I am doing",
       "id": 2
+    },
+    {
+      "title": "Things I have done",
+      "id": 3
     }
   ],
   "cards": [
     {
-      "title": "(No Title)",
+      "title": "Make a million dollars",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "columnId": "1",
       "id": 1
     },
     {
-      "title": "But so is this",
+      "title": "Something here",
       "description": "Quisque id scelerisque felis, sit amet scelerisque nunc.",
       "columnId": "2",
       "id": 4
     },
     {
       "title": "Title",
-      "description": "(No description)",
-      "columnId": 2,
+      "description": "Put some description",
+      "columnId": "2",
       "id": 6
     },
     {
-      "title": "Wah",
+      "title": "Eat a banana",
       "description": "(No description)",
-      "columnId": 1,
+      "columnId": "1",
       "id": 7
     },
     {
-      "title": "lau",
+      "title": "Learn how to microwave",
       "description": "This is not a post or is it",
       "columnId": "1",
       "id": 8
+    },
+    {
+      "title": "Finish GA",
+      "description": "GA was fun!",
+      "columnId": "3",
+      "id": 9
     }
   ]
 }

@@ -8,6 +8,26 @@ class App extends HTMLElement {
         this.shadowRoot.innerHTML = '<link rel="stylesheet" href="./app.css">';
         this.shadowRoot.appendChild(document.getElementById('app').content.cloneNode(true));
         this.renderColumnsAndCards = this.renderColumnsAndCards.bind(this);
+        this.shadowRoot.getElementById('search-bar').addEventListener('input', e => { this.searchCards(e) });
+        this.shadowRoot.getElementById('search-bar').addEventListener('keydown', e => {
+            if (e.keyCode === 27){
+                e.target.value = '';
+                this.searchCards(e);
+            }
+        })
+    }
+
+    searchCards(e) {
+        this.shadowRoot.querySelectorAll('task-column').forEach(column => {
+            column.shadowRoot.querySelectorAll('task-card').forEach(card => {
+                // console.log(card.getAttribute('description').toLowerCase())
+                if (card.title.toLowerCase().includes(e.target.value.toLowerCase())){
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            })
+        })
     }
 
     addButtonListeners() {

@@ -12,12 +12,12 @@ div {
     margin: 0;
 }
 
-button:hover {
+#add-card-button:hover {
     color: #092d42;
     background-color: rgba(9, 45, 66, .13);
 }
 
-button {
+#add-card-button {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -30,6 +30,7 @@ button {
     font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: rgb(107, 128, 140);
+    outline: none;
 }
 
 p {
